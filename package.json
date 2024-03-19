@@ -1,17 +1,29 @@
 {
   "name": "front-payroll-gt",
   "version": "1.0.0",
-  "main": "main.jsx",
+  "type": "module",
   "repository": "git@github.com:Internship-ciancoders-24-1/front-payroll-gt.git",
   "author": "Henry Gustavo X Az <azhenrygus@outlook.es>",
   "license": "MIT",
+  "scripts": {
+    "format": "prettier --write .",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0"
+  },
   "engines": {
     "node": ">=20.11.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.18",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.34.1",
     "postcss": "^8.4.37",
+    "prettier": "^3.2.5",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.6"
   },
