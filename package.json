@@ -1,0 +1,11 @@
+{
+  "name": "front-payroll-gt",
+  "version": "1.0.0",
+  "main": "main.jsx",
+  "repository": "git@github.com:Internship-ciancoders-24-1/front-payroll-gt.git",
+  "author": "Henry Gustavo X Az <azhenrygus@outlook.es>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.11.0"
+  }
+}
