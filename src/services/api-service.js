@@ -53,7 +53,7 @@ class ApiService {
   // parse regular expresion url to functional url
   // Example: /users/:user_id/posts/:post_id -> /users/1/posts/53
   #parseUrl(url, params) {
-    if(params === undefined && Object.keys(params).length === 0) {
+    if(params === undefined || Object.keys(params).length === 0) {
       return url
     }
 
