@@ -13,16 +13,11 @@ import App from './App'
 import './index.css'
 
 
+//redux
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import reducer from "./redux/reducers/index"
-
-const initialState = {}
-const store = createStore(reducer, initialState)
+import store from './redux/store'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-
- 
     <Provider store={store}>
      <BrowserRouter>
           <App />
