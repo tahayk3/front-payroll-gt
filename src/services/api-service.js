@@ -1,5 +1,9 @@
 import config from '../config'
 
+// notification service
+import notificationService from './notification-service'
+
+
 // HTTP methods
 const HTTP_METHOD = {
   GET: 'GET',
@@ -39,15 +43,33 @@ class ApiService {
             data,
           }))
 
+          if (!response.ok) {
+            return values
+          }
+
           resolve(values)
         })
-        .catch(error => {
-          if (error instanceof TypeError) {
-            reject(Error(error.message))
-          }
-          reject(error)
+        .then(response => {
+          const message = this.#errorMessageToString(response.data) 
+          notificationService.notify(message, 'error', {})      
+          resolve(response)
+        })
+        .catch(() => {
+          reject(notificationService.notify('internal error or network failed', 'error', {}))
         })
     })
+  }
+
+  // this function converts request response error messages to string
+  #errorMessageToString(data) {
+    let message = JSON.stringify(data)
+
+    message = message.replace(/[{}"]/g, '')
+    message = message.replace(/[[\]"]/g, '')
+    message = message.replace(/[:]/g, ' : ')
+    message = message.replace(/,/g, '')
+
+    return message
   }
 
   // parse regular expresion url to functional url
