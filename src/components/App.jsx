@@ -1,9 +1,10 @@
-import { Input } from './ui/input'
+import {Button} from './ui/button'
 
 const App = () => {
+  
   return (
     <div className='text-center text-2xl '>
-      <Input type='file' name='Subir imagen' />
+      <Button>Click</Button>
     </div>
   )
 }

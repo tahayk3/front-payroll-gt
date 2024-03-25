@@ -22,14 +22,24 @@
     --tertiary: 174 100% 42%;
     --tertiary-foreground: 169 100% 3%;
 
+    --success: 135 67.1% 28.4%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 45 100% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    /* blue 700 t */
+    --info: 201 93.8% 32.2%;
+    --info-foreground: 0 0% 100%;
+
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --danger: 0 84.2% 60.2%;
+    --danger-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
@@ -60,8 +70,8 @@
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --danger: 0 62.8% 30.6%;
+    --danger-foreground: 210 40% 98%;
 
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
