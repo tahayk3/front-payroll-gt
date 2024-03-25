@@ -2,11 +2,15 @@ import { json } from "react-router-dom";
 import { apiService } from "./api-service";
 
 class AuthService{
-    
-    async login() {
+
+    //EJEMPLO DE USO
+    // authService.login('empresa2@gmail.com', 'empresa2')
+    // .then(res => console.log(res))
+    // .catch(err => console.error(err))
+    async login(email, password) {
         const loginData = {
-            email: "empresa2@gmail.com",
-            password: "empresa2"
+            email: email,
+            password: password
         };
     
         try {
@@ -25,11 +29,14 @@ class AuthService{
         }
     }
 
-    async resetPassword() {
-        const id = 3;
+    //EJEMPLO DE USO
+    //authService.resetPassword('empresa2', 'empresa2', 3)
+    //.then(res => console.log(res))
+    //.catch(err => console.error(err))
+    async resetPassword(password, confirm_password, id) {
         const data = {
-            password: "empresa2",
-            confirm_password: "empresa2"
+            password: password,
+            confirm_password: confirm_password
         };
         try {
             const response = await apiService.put({
@@ -47,10 +54,7 @@ class AuthService{
             throw error;
         }
     }
-
-   
-      
-      
+  
     
 }
 
