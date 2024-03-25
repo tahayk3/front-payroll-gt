@@ -13,17 +13,22 @@ import './index.css'
 
 //redux
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import reducer from "./redux/reducers/index"
+import store from './redux/store'
+//pruebas de consumo redux
+import StoreConsumptionComponent from './components/ReduxStore/StoreConsumptionComponent'
 
-const initialState = {}
-const store = createStore(reducer, initialState)
+//componentes de imagenes
+import ImgUploader from './components/uploadFiles/ImgUploader'
+import FileUploader from './components/uploadFiles/FileUploader'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <React.StrictMode>
       <App />
+      <StoreConsumptionComponent/>
+      <FileUploader/>
+
+      <ImgUploader/>
       <ToastContainer />
-    </React.StrictMode>
   </Provider>
 )
