@@ -1,49 +1,48 @@
 import { Button } from './ui/button'
 import '../index.css'
 import React, { useState } from 'react';
-import { useLocalStorage } from "../services/local-storage";
+import SessionStorageHandler from '../services/session-storage'; 
 
 const App = () => {
-  const [inputText, setInputText, removeItem] = useLocalStorage("nombreUsuario", '');
   const [nombre, setNombre] = useState("");
-  const [nombreMostrar, setNombreMostra] = useState("");
+  const [nombreMostrar, setNombreMostrar] = useState("");
+
+  const handler = new SessionStorageHandler();
 
   const handleInputChange = (e) => {
-    const text = e.target.value
+    const text = e.target.value;
     setNombre(text);
     console.log(text);
   }
 
-  const saveData = (event) => {
-    setInputText(nombre);
-    alert('Valor del input guardado en el almacenamiento local: ');
-  }
-  const setData = () => {
-    setNombreMostra(inputText);
-    alert("Se mostro el valor guardado");
+  const handleSaveData = () => {
+    handler.saveData("nombreUsuario", nombre);
   };
-  const removeData = () => {
-    //Forma 1 de eliminar el item
-    //    setInputText("");
-    //forma 2 de eliminar item
-    removeItem();
-    setNombreMostra("");
-    alert("El valor del localStorage se ha eliminado");
+
+  const handleSetData = () => {
+    handler.setData("nombreUsuario");
+    const nombreMostrar = sessionStorage.getItem("nombreUsuario") || '';
+    setNombreMostrar(nombreMostrar);
+  };
+
+  const handleRemoveData = () => {
+    handler.removeData("nombreUsuario");
+    setNombreMostrar('');
   };
 
   return (
-    <div className='text-center text-2xl '>
+    <div>
       <label>
         Ingresar nombre:
         <br />
         <input
           type="text"
+          value={nombre}
           onChange={handleInputChange}
           style={{ border: '1px solid black', padding: '5px', borderRadius: '5px' }}
         />
       </label>
-      <Button onClick={saveData} >Guardar</Button>
-
+      <Button onClick={handleSaveData}>Guardar</Button>
 
       <br />
       <br />
@@ -58,13 +57,12 @@ const App = () => {
           style={{ border: '1px solid black', padding: '5px', borderRadius: '5px' }}
         />
       </label>
-      <Button onClick={setData}>Recuperar valor del localStorage</Button>
+      <Button onClick={handleSetData}>Recuperar valor del sessionStorage</Button>
 
       <br />
       <br />
-      <Button onClick={removeData}>Eliminar valor del localStorage</Button>
+      <Button onClick={handleRemoveData}>Eliminar valor del sessionStorage</Button>
     </div>
-  )
-}
-
-export default App
+  );
+};
+export default App;
