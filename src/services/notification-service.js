@@ -3,16 +3,40 @@ import { toast } from 'react-toastify'
 class NotificationService {
   constructor() {}
 
-  notify(message, type = 'success', options = {}) {
-    if (!['success', 'error', 'warning', 'info'].includes(type)) {
-      throw new Error('Invalid notification type')
-    }
-
+  #validateMessage(message) {
     if (!message) {
-      throw new Error('Notification message is required')
+      this.error('Message is required')
+      return false
     }
+    return true
+  }
 
-    toast[type](message, options)
+  success(message, options = {}) {
+    if (this.#validateMessage(message)) {
+      toast.success(message, options)
+    }
+  }
+
+  error(message, options = {}) {
+    if (this.#validateMessage(message)) {
+      toast.error(message, options)
+    }
+  }
+
+  warning(message, options = {}) {
+    if (this.#validateMessage(message)) {
+      toast.warn(message, options)
+    }
+  }
+
+  info(message, options = {}) {
+    if (this.#validateMessage(message)) {
+      toast.info(message, options)
+    }
+  }
+
+  clear() {
+    toast.dismiss()
   }
 }
 
