@@ -14,7 +14,9 @@ class AuthService{
                 url: '/login/',
                 data: loginData,
             });
-            // return await response.json()
+
+            sessionStorage.setItem('token', response.data.token)
+
             return response;
  
         } catch (error) {
@@ -22,6 +24,33 @@ class AuthService{
             throw error;
         }
     }
+
+    async resetPassword() {
+        const id = 3;
+        const data = {
+            password: "empresa2",
+            confirm_password: "empresa2"
+        };
+        try {
+            const response = await apiService.put({
+                url: '/reset-pass/:id/',
+                params: {
+                    'id': id,
+                },
+                data: data,
+            });
+            sessionStorage.setItem('token', response.data.token)
+
+            return response;
+        } catch (error) {
+            console.error("Error al cambiar password:", error);
+            throw error;
+        }
+    }
+
+   
+      
+      
     
 }
 
