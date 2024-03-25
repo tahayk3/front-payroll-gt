@@ -1,18 +1,17 @@
 
-import React from "react";
 
+import React, { useEffect, useContext } from 'react'
 import {  useNavigate } from "react-router-dom"; 
 import { AuthContext } from "../auth/provider/AuthContext";
 import simulateAuthentication from "../pages/private/simulateAuthentication";
 
 
 
-
 export const AuthRoute = props => {
-  const { userInfo,setUserInfo } = React.useContext(AuthContext)
+  const { userInfo,setUserInfo } = useContext(AuthContext)
   const navigate = useNavigate()
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!userInfo) {
       // Si el usuario no está autenticado, simula la autenticación
       simulateAuthentication(setUserInfo, navigate)
@@ -22,4 +21,3 @@ export const AuthRoute = props => {
 
   return <>{props.children}</>
 }
-

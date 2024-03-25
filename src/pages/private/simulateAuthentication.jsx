@@ -6,6 +6,8 @@ const simulateAuthentication = (setUserInfo, navigate) => {
   const username = 'admin'
   const password = 'test'
 
+
+
   if (username === 'admin' && password === 'test') {
     setUserInfo(username)
     console.log('Usuario autenticado. Redirigiendo...')
@@ -19,4 +21,5 @@ const simulateAuthentication = (setUserInfo, navigate) => {
 }
 
 export default simulateAuthentication
+
 
