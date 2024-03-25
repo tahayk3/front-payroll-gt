@@ -2,16 +2,31 @@
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 
+//toastify
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 // components
 import App from './App'
 
 // styles
 import './index.css'
 
+
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import reducer from "./redux/reducers/index"
+
+const initialState = {}
+const store = createStore(reducer, initialState)
+
 ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  // </React.StrictMode>
+
+ 
+    <Provider store={store}>
+     <BrowserRouter>
+          <App />
+          <ToastContainer />
+     </BrowserRouter>
+    </Provider>
 )
