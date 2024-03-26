@@ -38,6 +38,13 @@ class NotificationService {
   clear() {
     toast.dismiss()
   }
+
+ notify(message, type, options) {
+        toast(message, { type, ...options });
+    }
+  
 }
 
 export default Object.freeze(new NotificationService())
+// const notificationService = new NotificationService();
+// export default notificationService;
