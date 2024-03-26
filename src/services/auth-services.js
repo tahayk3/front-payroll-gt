@@ -22,6 +22,8 @@ class AuthService {
             });
 
             sessionStorage.setItem('token', response.data.token)
+            const userDataJSON = JSON.stringify(response.data.data_user);
+            sessionStorage.setItem('data-user', userDataJSON)
 
             return response;
 
@@ -61,6 +63,13 @@ class AuthService {
     }
 
 
+  
+    getToken() {
+        const token = sessionStorage.getItem('token');
+        return token;
+    }
+      
+    
 }
 
 export const authService = Object.freeze(new AuthService())
