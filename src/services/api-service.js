@@ -3,6 +3,8 @@ import config from '../config'
 // notification service
 import notificationService from './notification-service'
 
+// session service
+import sessionService from './session-service'
 
 // HTTP methods
 const HTTP_METHOD = {
@@ -14,20 +16,24 @@ const HTTP_METHOD = {
 }
 
 class ApiService {
-    #token = 'no token'
+    #token = ''
     #root = config.API_URL
     headers = {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Authorization: this.#token,
     }
 
     // resolve request with fetch
     async #request(url, method, data) {
 
+        this.#token = `Token ${sessionService.get('token')}`
+
         const options = {
             method,
-            headers: this.headers,
+            headers: {
+                ...this.headers,
+                Authorization: this.#token,
+            },
         }
 
         if (method !== HTTP_METHOD.GET && method !== HTTP_METHOD.DELETE) {
