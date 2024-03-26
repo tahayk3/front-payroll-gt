@@ -1,8 +1,10 @@
 import { json } from "react-router-dom";
 import { apiService } from "./api-service";
 // import { apiService } from "./api-service";
+import { menuSuperAdmin, menuAdmin, menuUser } from "./menu-service";
 
-class AuthService {
+
+class AuthService{
 
     // EJEMPLO DE USO
     // authService.login('empresa2@gmail.com', 'empresa2')
@@ -25,8 +27,8 @@ class AuthService {
             const userDataJSON = JSON.stringify(response.data.data_user);
             sessionStorage.setItem('data-user', userDataJSON)
 
-            return response;
-
+            return this.getMenu(response.data.data_user.role);
+             
         } catch (error) {
             console.error("Error al iniciar sesión:", error);
             throw error;
@@ -69,6 +71,17 @@ class AuthService {
         return token;
     }
       
+    getMenu(role){
+        if(role == 'superadmin'){
+            return menuSuperAdmin;
+        }
+        else if(role == 'admin'){
+            return menuAdmin;
+        }
+        else if(role == 'user'){
+            return menuUser;
+        }
+    }
     
 }
 
