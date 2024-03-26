@@ -1,5 +1,6 @@
 
-class SessionStorageHandler {
+class SessionService
+ {
   constructor() { }
 
   set(clave, valor) {
@@ -19,6 +20,8 @@ class SessionStorageHandler {
   remove(clave) {
     sessionStorage.removeItem(clave);
     console.log('Se ha eliminado el valor de sessionStorage bajo la clave "' + clave + '"' + sessionStorage);
+    console.log('Nuevo estado de sessionStorage:', sessionStorage);
+
   }
   removeAll() {
     Object.keys(sessionStorage).forEach(key => {
@@ -30,4 +33,4 @@ class SessionStorageHandler {
   }
 
 }
-export default SessionStorageHandler;
+export default Object.freeze(new SessionService())
