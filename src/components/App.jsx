@@ -1,13 +1,17 @@
-import { Button } from './ui/button'
-import '../index.css'
-import React, { useState } from 'react';
+import {Button} from './ui/button'
+
+
 
 const App = () => {
 
   return (
-    <div>
-      <Button >Guardar</Button>
+    <div className='text-center text-2xl'>
+      <Button>Click</Button>
+      <div className='text-center text-2xl'>
+        App
+      </div>
     </div>
   );
 };
+
 export default App;
