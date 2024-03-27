@@ -68,7 +68,7 @@ const Layout = ({ children }) => {
               <AccordionTrigger>Gestión de Nómina</AccordionTrigger>
               <AccordionContent>
                 <ul>
-                  <li><Link to='/nomina'>Nomina</Link></li>
+                  <li><Link to='/payroll'>Nomina</Link></li>
                   <li><Link to='/conceptos'>Conceptos</Link></li>
                   <li><Link to='/periocidad'>Periocidad</Link></li>
                 </ul>

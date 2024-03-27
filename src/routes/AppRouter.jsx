@@ -5,12 +5,14 @@ import { AuthRoute } from '../routes/AuthRoute';
 
 import {
   Employee,
-  Payroll,
   Profile,
   Store,
   Dashboard,
+  Periocidad,
   Company,
+  Payroll
 } from '../pages/private'
+
 import { Login,Home, Uikit, Register, NotFound, RegisterCompany} from '../pages/public';
 
 import Layout from '@/components/Layout';
@@ -35,8 +37,9 @@ const AppRouter = () => {
       <Route path='/dashboard' element={<AuthRoute><Layout>< Dashboard/></Layout></AuthRoute>}/>
       <Route path='/company' element={<AuthRoute><Layout>< Company/></Layout></AuthRoute>}/>
       <Route path='/employee' element={<AuthRoute><Layout><Employee /></Layout></AuthRoute>}/>
-      <Route path='/Payroll' element={<AuthRoute><Layout><Payroll/></Layout></AuthRoute>}/>
       <Route path='/store' element={<AuthRoute><Layout><Store/></Layout></AuthRoute>}/>
+      <Route path='/payroll' element={<AuthRoute><Layout><Payroll/></Layout></AuthRoute>}/>
+      <Route path='/periocidad' element={<AuthRoute><Layout><Periocidad/></Layout></AuthRoute>}/>
     </Routes>
     </>
   )
