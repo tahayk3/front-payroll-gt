@@ -14,14 +14,20 @@ import './index.css'
 
 // redux
 import { Provider } from 'react-redux'
-import store from './redux/store'
+import createInitialStateAndStore from '../src/redux/store'
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-      <ToastContainer />
-    </BrowserRouter>
-  </Provider>,
-)
+async function renderApp() {
+  const store = await createInitialStateAndStore(); // Espera a que el store se inicialice
+
+  ReactDOM.createRoot(document.getElementById('root')).render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+        <ToastContainer />
+      </BrowserRouter>
+    </Provider>
+  );
+}
+
+renderApp(); // Llama a la función para renderizar la aplicación
