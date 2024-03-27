@@ -1,14 +1,12 @@
-
-import { Link } from 'react-router-dom';
-import React from 'react'
+import { Separator } from '@/components/ui/separator'
+import { Button } from '@/components/ui/button'
 
 export const Employee = () => {
   return (
     <>
-      <h1>Modulo Employee</h1>
-      
-     <Link to='/dashboard'>Volver al dashboard</Link>
-      
+      <h1>Modulo empleado</h1>
+      <Button variant='info'>nuevo</Button>
+      <Separator />  
     </>
-  )
-}
+  );
+};
