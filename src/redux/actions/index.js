@@ -16,4 +16,9 @@ export const addCompany = (company) => ({
     //carga útil: id para encontrar company
     payload: companyId
   });
+
+  export const addPayrollPeriod = (payrollPeriod) => ({
+    type: 'ADD_PAYROLL_PERIOD',
+    payload: payrollPeriod
+  });
   

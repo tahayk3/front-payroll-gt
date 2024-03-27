@@ -3,19 +3,27 @@ import React from 'react';
 function Tabla({ columnas, datos }) {
   return (
     <div className="overflow-x-auto">
-      <table className="table-auto w-full border-collapse border bg-blue-500 text-white">
-        <thead>
+      <table className="min-w-full divide-y divide-gray-200 shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+        <thead className="bg-gray-50">
           <tr>
             {columnas.map((columna, index) => (
-              <th key={index} className="border p-2 bg-blue-700 text-white">{columna}</th>
+              <th
+                key={index}
+                scope="col"
+                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+              >
+                {columna}
+              </th>
             ))}
           </tr>
         </thead>
-        <tbody>
+        <tbody className="bg-white divide-y divide-gray-200">
           {datos.map((fila, index) => (
-            <tr key={index} className={index % 2 === 0 ? "bg-blue-300" : "bg-blue-200"}>
+            <tr key={index}>
               {fila.map((dato, index) => (
-                <td key={index} className="border p-2 text-black">{dato}</td>
+                <td key={index} className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                  {dato}
+                </td>
               ))}
             </tr>
           ))}

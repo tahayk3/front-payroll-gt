@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 class PayRollCompany extends Component {
 
     render() {
-        const { payRollListPeriocidad } = this.props;
-        const columnas = ['ID', 'Nombre', 'Tipo', 'Acciones'];
-        const datos = payRollListPeriocidad.map(payroll => [
+        const { payRollList } = this.props;
+        const columnas = ['ID', 'date_generated', 'total', ];
+        const datos = payRollList.map(payroll => [
             payroll.id,
-            payroll.name,
-            payroll.type,
+            payroll.date_generated,
+            payroll.total
         ]);
 
         return (

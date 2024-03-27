@@ -24,6 +24,12 @@ const reducer = (state, action) => {
         company.id !== action.payload
         )
       };
+      //AQUI LO MEJOR ES CREAR ARCHIVOS DIFERNTES PARA CADA MODULO PERO YA NO TENGO TIEMPO :C
+    case 'ADD_PAYROLL_PERIOD':
+      return {
+        ...state,
+        payRollListPeriocidad: [...state.payRollListPeriocidad, action.payload]
+      };
     default:
       return state;
   }
