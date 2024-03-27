@@ -13,6 +13,8 @@ import {
 } from '../pages/private'
 import { Login,Home, Uikit, Register, NotFound, RegisterCompany} from '../pages/public';
 
+import Layout from '@/components/Layout';
+
 
 
 const AppRouter = () => {
@@ -29,12 +31,12 @@ const AppRouter = () => {
 
 
 {/* ----------PRIVATE ROUTES-------- */}
-      <Route path='/dashboard' element={<AuthRoute>< Dashboard/></AuthRoute>}/>
-      <Route path='/profile' element={<AuthRoute><Profile /></AuthRoute>}/>
-      <Route path='/company' element={<AuthRoute>< Company/></AuthRoute>}/>
-      <Route path='/employee' element={<AuthRoute><Employee /></AuthRoute>}/>
-      <Route path='/Payroll' element={<AuthRoute> <Payroll/> </AuthRoute>}/>
-      <Route path='/store' element={<AuthRoute>< Store/></AuthRoute>}/>
+      <Route path='/profile' element={<AuthRoute><Layout><Profile /></Layout></AuthRoute>}/>
+      <Route path='/dashboard' element={<AuthRoute><Layout>< Dashboard/></Layout></AuthRoute>}/>
+      <Route path='/company' element={<AuthRoute><Layout>< Company/></Layout></AuthRoute>}/>
+      <Route path='/employee' element={<AuthRoute><Layout><Employee /></Layout></AuthRoute>}/>
+      <Route path='/Payroll' element={<AuthRoute><Layout><Payroll/></Layout></AuthRoute>}/>
+      <Route path='/store' element={<AuthRoute><Layout><Store/></Layout></AuthRoute>}/>
     </Routes>
     </>
   )
