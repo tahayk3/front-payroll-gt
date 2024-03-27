@@ -1,23 +1,19 @@
+// AuthRouter.jsx
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
+export const AuthRoute = ({ children }) => {
+  const navigate = useNavigate();
 
-import React, { useEffect, useContext } from 'react'
-import {  useNavigate } from "react-router-dom"; 
-import { AuthContext } from "../auth/provider/AuthContext";
-import simulateAuthentication from "../pages/private/simulateAuthentication";
-
-
-
-export const AuthRoute = props => {
-  const { userInfo,setUserInfo } = useContext(AuthContext)
-  const navigate = useNavigate()
 
   useEffect(() => {
-    if (!userInfo) {
-      // Si el usuario no está autenticado, simula la autenticación
-      simulateAuthentication(setUserInfo, navigate)
+    const token = sessionStorage.getItem('token');
+    if (!token) {
+      // Si no hay token en el localStorage, redirige a la página de inicio de sesión
+      navigate('/login');
     }
-  }, []);
+  }, []); // Solo se ejecuta una vez al montar el componente
 
-
-  return <>{props.children}</>
-}
+  // Si hay un token en el localStorage, renderiza las rutas privadas
+  return <>{children}</>;
+};

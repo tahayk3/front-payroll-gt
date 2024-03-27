@@ -1,12 +1,7 @@
-
-
-
 const simulateAuthentication = (setUserInfo, navigate) => {
   // Simula la lógica de autenticación
   const username = 'admin'
   const password = 'test'
-
-
 
   if (username === 'admin' && password === 'test') {
     setUserInfo(username)

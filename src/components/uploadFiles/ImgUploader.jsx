@@ -1,19 +1,24 @@
 import React from "react";
 import Uploader from "./Uploader";
 
-function ImgUploader() {
+function ImgUploader({ onUpload }) {
 
-  //funcion para obtener nombre
+  // Función para obtener el nombre del archivo
   const handleFileName = (fileName) => {
     return fileName;
+  };
+
+  // Función para manejar la carga de la imagen
+  const handleUpload = (url) => {
+    onUpload(url);
   };
 
   return (
     <Uploader
       acceptedTypes={/\.(jpg|jpeg|png)$/i}
       errorMessage="Por favor selecciona un archivo de imagen (JPEG, PNG o JPG)."
-      successMessage="La URL de la imagen es: "
       handleFileName={handleFileName}
+      onUpload={handleUpload} // Pasar la función handleUpload
     />
   );
 }

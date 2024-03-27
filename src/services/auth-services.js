@@ -13,27 +13,48 @@ class AuthService{
     
     async login(email, password) {
         const loginData = {
-            email: email,
-            password: password
+          email: email,
+          password: password
         };
-
+      
         try {
-            const response = await apiService.post({
-                url: '/login/',
-                data: loginData,
-            });
-
-            sessionStorage.setItem('token', response.data.token)
-            const userDataJSON = JSON.stringify(response.data.data_user);
-            sessionStorage.setItem('data-user', userDataJSON)
-
-            return this.getMenu(response.data.data_user.role);
-             
+          const response = await apiService.post({
+            url: '/login/',
+            data: loginData,
+          });
+      
+          if (response && response.data) {
+            // Verifica si la respuesta contiene el token
+            if (response.data.token) {
+              sessionStorage.setItem('token', response.data.token);
+      
+              // Verifica si la respuesta contiene el objeto de usuario
+              if (response.data.user) {
+                const userDataJSON = JSON.stringify(response.data.user);
+                sessionStorage.setItem('data-user', userDataJSON);
+                return this.getMenu(response.data.user.role);
+              } else {
+                console.warn('El objeto de usuario en la respuesta es undefined');
+                sessionStorage.setItem('data-user', JSON.stringify({}));
+              }
+            } else {
+              console.error('No se encontró el token en la respuesta del servidor');
+              sessionStorage.removeItem('token'); // Elimina cualquier token existente
+              sessionStorage.removeItem('data-user'); // Elimina cualquier dato de usuario existente
+              throw new Error('Credenciales incorrectas');
+            }
+          } else {
+            console.error('La respuesta del servidor no contiene datos válidos');
+            throw new Error('Error al iniciar sesión');
+          }
         } catch (error) {
-            console.error("Error al iniciar sesión:", error);
-            throw error;
+          console.error("Error al iniciar sesión:", error);
+          throw error;
         }
-    }
+      }
+      
+    
+    
 
 
 

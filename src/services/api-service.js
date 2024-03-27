@@ -60,8 +60,15 @@ class ApiService {
                     notificationService.notify(message, 'error', {})
                     resolve(response)
                 })
-                .catch(() => {
-                    reject(notificationService.notify('internal error or network failed', 'error', {}))
+                .catch((err) => {
+                    console.error('Error en la solicitud:', err);
+                    if (err instanceof TypeError && err.message === 'Failed to fetch') {
+                        notificationService.notify('Error de red. Por favor, comprueba tu conexión a internet.', 'error', {});
+                    } else {
+                        // Otros tipos de errores
+                        notificationService.notify('Error interno en el servidor. Por favor, inténtalo de nuevo más tarde.', 'error', {});
+                    }
+                    reject(err);
                 })
         })
     }

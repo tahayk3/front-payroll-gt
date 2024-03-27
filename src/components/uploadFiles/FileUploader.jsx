@@ -8,12 +8,18 @@ function FileUploader() {
     return fileName;
   };
 
+  // Función para manejar la carga de la imagen
+  const handleUpload = (url) => {
+    onUpload(url);
+  };
+
   return (
     <Uploader
       acceptedTypes={/\.pdf$/i}
       errorMessage="Por favor selecciona un archivo PDF."
       successMessage="La URL del archivo es: "
       handleFileName={handleFileName}
+      onUpload={handleUpload}
     />
   );
 }
